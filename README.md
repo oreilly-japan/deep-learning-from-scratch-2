@@ -2,7 +2,7 @@
 
 ---
 
-![表紙](deep-learning-from-scratch-2.png)
+![表紙](https://raw.githubusercontent.com/oreilly-japan/deep-learning-from-scratch-2/images/deep-learning-from-scratch-2.png))
 
 ---
 
