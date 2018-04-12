@@ -8,7 +8,7 @@ except ImportError:
 import pickle
 import numpy as np
 from common.config import GPU
-from common.util import to_gpu
+
 
 url_base = 'https://raw.githubusercontent.com/tomsercu/lstm/master/data/'
 key_file = {
@@ -86,6 +86,7 @@ def load_data(data_type='train'):
     if os.path.exists(save_path):
         corpus = np.load(save_path)
         if GPU:
+            from common.util import to_gpu
             corpus = to_gpu(corpus)
         return corpus, word_to_id, id_to_word
 
@@ -99,6 +100,7 @@ def load_data(data_type='train'):
     np.save(save_path, corpus)
 
     if GPU:
+        from common.util import to_gpu
         corpus = to_gpu(corpus)
 
     return corpus, word_to_id, id_to_word
