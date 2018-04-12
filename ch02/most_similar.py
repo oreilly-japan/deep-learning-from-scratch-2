@@ -1,7 +1,7 @@
 # coding: utf-8
 import sys, os
 sys.path.append(os.pardir)
-from common.util import preprocess, create_co_matrix, cos_similarity, most_similar
+from common.util import preprocess, create_co_matrix, most_similar
 
 
 text = 'You say goodbye and I say hello.'
