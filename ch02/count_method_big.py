@@ -17,7 +17,7 @@ print('calculating PPMI ...')
 W = ppmi(C, verbose=True)
 
 print('calculating SVD ...')
-# trancated SVD (fast!)
+# truncated SVD (fast!)
 from sklearn.utils.extmath import randomized_svd
 U, S, V = randomized_svd(W, n_components=wordvec_size,
                          n_iter=5, random_state=None)
