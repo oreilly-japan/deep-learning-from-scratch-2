@@ -26,6 +26,6 @@ U, S, V = randomized_svd(W, n_components=wordvec_size,
 
 word_vecs = U[:, :wordvec_size]
 
-querys = ['you', 'year', 'car', 'toyota']
-for query in querys:
+queries = ['you', 'year', 'car', 'toyota']
+for query in queries:
     most_similar(query, word_to_id, id_to_word, word_vecs, top=5)
