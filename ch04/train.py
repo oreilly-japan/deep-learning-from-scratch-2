@@ -1,5 +1,6 @@
 # coding: utf-8
-import sys, os
+import sys
+import os
 sys.path.append(os.pardir)
 import numpy as np
 from common import config

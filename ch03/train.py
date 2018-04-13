@@ -1,5 +1,6 @@
 # coding: utf-8
-import sys, os
+import sys
+import os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 from common.trainer import Trainer
 from common.optimizer import Adam

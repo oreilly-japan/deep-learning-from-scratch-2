@@ -1,5 +1,6 @@
 # coding: utf-8
-import sys, os
+import sys
+import os
 sys.path.append(os.pardir)
 from common.util import preprocess, create_co_matrix, most_similar
 

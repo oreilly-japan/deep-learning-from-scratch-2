@@ -1,5 +1,6 @@
 # coding: utf-8
-import sys, os
+import sys
+import os
 sys.path.append(os.pardir)
 from common import config
 # GPUで実行する場合は下記のコメントアウトを消去（要cupy）
