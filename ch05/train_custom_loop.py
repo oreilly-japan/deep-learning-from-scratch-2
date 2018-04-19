@@ -1,7 +1,6 @@
 # coding: utf-8
 import sys, os
 sys.path.append(os.pardir)
-import time
 import matplotlib.pyplot as plt
 import numpy as np
 from common.optimizer import SGD
@@ -30,8 +29,6 @@ print('corpus size: %d, vocabulary size: %d' % (corpus_size, vocab_size))
 
 # 学習時に使用する変数
 max_iters = data_size // (batch_size * time_size)
-iters = 0
-epoch = 0
 time_idx = 0
 total_loss = 0
 loss_count = 0
@@ -46,14 +43,14 @@ jump = (corpus_size - 1) // batch_size
 offsets = [i * jump for i in range(batch_size)]
 
 for epoch in range(max_epoch):
-    for iters in range(max_iters):
+    for iter in range(max_iters):
         # ミニバッチの取得
         batch_x = np.empty((batch_size, time_size), dtype='i')
         batch_t = np.empty((batch_size, time_size), dtype='i')
         for t in range(time_size):
             for i, offset in enumerate(offsets):
                 batch_x[i, t] = xs[(offset + time_idx) % data_size]
-                batch_t[i, t] = ts[(offset + time_idx + 1) % data_size]
+                batch_t[i, t] = ts[(offset + time_idx) % data_size]
             time_idx += 1
 
         # 勾配を求め、パラメータを更新
