@@ -1,7 +1,7 @@
 # coding: utf-8
 import sys, os
 sys.path.append(os.pardir)
-from common.np import *  # import numpy as np
+import numpy as np
 from common.functions import softmax
 from ch06.rnnlm import Rnnlm
 from ch06.better_rnnlm import BetterRnnlm
