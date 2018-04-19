@@ -1,6 +1,6 @@
 # coding: utf-8
-import sys, os
-sys.path.append(os.pardir)
+import sys
+sys.path.append('..')
 import matplotlib.pyplot as plt
 import numpy as np
 from common.util import most_similar, analogy

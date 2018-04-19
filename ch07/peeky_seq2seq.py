@@ -1,6 +1,6 @@
 # coding: utf-8
-import sys, os
-sys.path.append(os.pardir)
+import sys
+sys.path.append('..')
 from common.time_layers import *
 from ch07.seq2seq import Seq2seq, Encoder
 

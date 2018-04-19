@@ -1,6 +1,6 @@
 # coding: utf-8
-import sys, os
-sys.path.append(os.pardir)
+import sys
+sys.path.append('..')
 from common.optimizer import SGD
 from common.trainer import RnnlmTrainer
 from dataset import ptb

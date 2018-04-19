@@ -1,6 +1,6 @@
 # coding: utf-8
-import sys, os
-sys.path.append(os.pardir)
+import sys
+sys.path.append('..')
 from common.layers import *
 from ch04.negative_sampling_layer import NegativeSamplingLoss
 

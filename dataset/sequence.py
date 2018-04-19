@@ -1,6 +1,6 @@
 # coding: utf-8
-import sys, os
-sys.path.append(os.pardir)
+import sys
+sys.path.append('..')
 from common.np import *  # import numpy as np
 from common.config import GPU
 from common.util import to_gpu
