@@ -25,7 +25,7 @@ def load_data(file_name='addition.txt', seed=1984):
     file_path = os.path.dirname(os.path.abspath(__file__)) + '/' + file_name
 
     if not os.path.exists(file_path):
-        print('No file: %s' % (file_name) )
+        print('No file: %s' % file_name)
         return None
 
     questions, answers = [], []
@@ -60,14 +60,14 @@ def load_data(file_name='addition.txt', seed=1984):
 
     # 10% for validation set
     split_at = len(x) - len(x) // 10
-    (x_train, x_val) = x[:split_at], x[split_at:]
-    (t_train, t_val) = t[:split_at], t[split_at:]
+    (x_train, x_test) = x[:split_at], x[split_at:]
+    (t_train, t_test) = t[:split_at], t[split_at:]
 
     if GPU:
         x_train, t_train = to_gpu(x_train), to_gpu(t_train)
-        x_val, t_val = to_gpu(x_val), to_gpu(t_val)
+        x_test, t_test = to_gpu(x_test), to_gpu(t_test)
 
-    return (x_train, t_train), (x_val, t_val)
+    return (x_train, t_train), (x_test, t_test)
 
 
 def get_vocab():

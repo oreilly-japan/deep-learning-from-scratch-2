@@ -1,18 +1,18 @@
 # coding: utf-8
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
-import numpy as np
+import numpy as np`
 from dataset import sequence
 import matplotlib.pyplot as plt
 from attention_seq2seq import AttentionSeq2seq
 
 
-(x_train, t_train), (x_val, t_val) = \
+(x_train, t_train), (x_test, t_test) = \
     sequence.load_data('date.txt')
 char_to_id, id_to_char = sequence.get_vocab()
 
 # Reverse input
-x_train, x_val = x_train[:, ::-1], x_val[:, ::-1]
+x_train, x_test = x_train[:, ::-1], x_test[:, ::-1]
 
 vocab_size = len(char_to_id)
 wordvec_size = 16
@@ -40,9 +40,9 @@ def visualize(attention_map, row_labels, column_labels):
 
 np.random.seed(1984)
 for _ in range(5):
-    idx = [np.random.randint(0, len(x_val))]
-    x = x_val[idx]
-    t = t_val[idx]
+    idx = [np.random.randint(0, len(x_test))]
+    x = x_test[idx]
+    t = t_test[idx]
 
     model.forward(x, t)
     d = model.decoder.attention.attention_weights
