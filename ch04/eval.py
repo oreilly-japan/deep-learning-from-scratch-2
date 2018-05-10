@@ -5,6 +5,7 @@ import numpy as np
 from common.util import most_similar, analogy
 import pickle
 
+
 pkl_file = 'cbow_params.pkl'
 # pkl_file = 'skipgram_params.pkl'
 
