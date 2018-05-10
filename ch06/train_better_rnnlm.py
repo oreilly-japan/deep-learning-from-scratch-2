@@ -8,7 +8,7 @@ from common import config
 # ==============================================
 from common.optimizer import SGD
 from common.trainer import RnnlmTrainer
-from common.util import eval_perplexity
+from common.util import eval_perplexity, to_gpu
 from dataset import ptb
 from better_rnnlm import BetterRnnlm
 
@@ -27,6 +27,12 @@ dropout = 0.5
 corpus, word_to_id, id_to_word = ptb.load_data('train')
 corpus_val, _, _ = ptb.load_data('val')
 corpus_test, _, _ = ptb.load_data('test')
+
+if config.GPU:
+    corpus = to_gpu(corpus)
+    corpus_val = to_gpu(corpus_val)
+    corpus_test = to_gpu(corpus_test)
+
 vocab_size = len(word_to_id)
 xs = corpus[:-1]
 ts = corpus[1:]

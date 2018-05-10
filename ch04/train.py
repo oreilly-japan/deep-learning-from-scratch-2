@@ -26,11 +26,8 @@ max_epoch = 10
 corpus, word_to_id, id_to_word = ptb.load_data('train')
 vocab_size = len(word_to_id)
 
-if not config.GPU:
-    contexts, target = create_contexts_target(corpus, window_size=window_size)
-else:
-    corpus = to_cpu(corpus)
-    contexts, target = create_contexts_target(corpus, window_size=window_size)
+contexts, target = create_contexts_target(corpus, window_size)
+if config.GPU:
     contexts, target = to_gpu(contexts), to_gpu(target)
 
 # モデルなどの生成

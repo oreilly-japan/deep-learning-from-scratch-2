@@ -8,7 +8,6 @@ except ImportError:
     raise ImportError('Use Python3!')
 import pickle
 import numpy as np
-from common.config import GPU
 
 
 url_base = 'https://raw.githubusercontent.com/tomsercu/lstm/master/data/'
@@ -86,9 +85,6 @@ def load_data(data_type='train'):
 
     if os.path.exists(save_path):
         corpus = np.load(save_path)
-        if GPU:
-            from common.util import to_gpu
-            corpus = to_gpu(corpus)
         return corpus, word_to_id, id_to_word
 
     file_name = key_file[data_type]
@@ -99,11 +95,6 @@ def load_data(data_type='train'):
     corpus = np.array([word_to_id[w] for w in words])
 
     np.save(save_path, corpus)
-
-    if GPU:
-        from common.util import to_gpu
-        corpus = to_gpu(corpus)
-
     return corpus, word_to_id, id_to_word
 
 
