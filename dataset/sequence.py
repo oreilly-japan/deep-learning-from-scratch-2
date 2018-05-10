@@ -1,9 +1,7 @@
 # coding: utf-8
 import sys
 sys.path.append('..')
-from common.np import *  # import numpy as np
-from common.config import GPU
-from common.util import to_gpu
+import os
 import numpy
 
 
@@ -62,10 +60,6 @@ def load_data(file_name='addition.txt', seed=1984):
     split_at = len(x) - len(x) // 10
     (x_train, x_test) = x[:split_at], x[split_at:]
     (t_train, t_test) = t[:split_at], t[split_at:]
-
-    if GPU:
-        x_train, t_train = to_gpu(x_train), to_gpu(t_train)
-        x_test, t_test = to_gpu(x_test), to_gpu(t_test)
 
     return (x_train, t_train), (x_test, t_test)
 
