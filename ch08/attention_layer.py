@@ -12,7 +12,8 @@ class WeightSum:
 
     def forward(self, hs, a):
         N, T, H = hs.shape
-        ar = a.reshape(N, T, 1)
+
+        ar = a.reshape(N, T, 1)#.repeat(T, axis=1)
         t = hs * ar
         c = np.sum(t, axis=1)
 
@@ -39,7 +40,7 @@ class AttentionWeight:
     def forward(self, hs, h):
         N, T, H = hs.shape
 
-        hr = h.reshape(N, 1, H)  # .repeat(T, axis=1)
+        hr = h.reshape(N, 1, H)#.repeat(T, axis=1)
         t = hs * hr
         s = np.sum(t, axis=2)
         a = self.softmax.forward(s)
