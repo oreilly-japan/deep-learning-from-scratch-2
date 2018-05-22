@@ -32,6 +32,9 @@ class BaseModel:
         if file_name is None:
             file_name = self.__class__.__name__ + '.pkl'
 
+        if '/' in file_name:
+            file_name = file_name.replace('/', os.sep)
+
         if not os.path.exists(file_name):
             raise IOError('No file: ' + file_name)
 
