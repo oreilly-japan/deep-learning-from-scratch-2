@@ -33,7 +33,7 @@ class BaseModel:
             file_name = self.__class__.__name__ + '.pkl'
 
         if not os.path.exists(file_name):
-            raise IOError('No file: '' + file_name + ''')
+            raise IOError('No file: ' + file_name)
 
         with open(file_name, 'rb') as f:
             params = pickle.load(f)
