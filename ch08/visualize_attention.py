@@ -1,7 +1,7 @@
 # coding: utf-8
 import sys
-sys.path.append('..')  # 親ディレクトリのファイルをインポートするための設定
-import numpy as np`
+sys.path.append('..')
+import numpy as np
 from dataset import sequence
 import matplotlib.pyplot as plt
 from attention_seq2seq import AttentionSeq2seq
