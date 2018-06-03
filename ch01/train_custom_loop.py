@@ -54,7 +54,7 @@ for epoch in range(max_epoch):
 
 # 学習結果のプロット
 plt.plot(np.arange(len(loss_list)), loss_list, label='train')
-plt.xlabel('epochs')
+plt.xlabel('iterations (x10)')
 plt.ylabel('loss')
 plt.show()
 
