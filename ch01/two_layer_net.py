@@ -9,7 +9,7 @@ class TwoLayerNet:
     def __init__(self, input_size, hidden_size, output_size):
         I, H, O = input_size, hidden_size, output_size
 
-        # 重みの初期化
+        # 重みとバイアスの初期化
         W1 = 0.01 * np.random.randn(I, H)
         b1 = np.zeros(H)
         W2 = 0.01 * np.random.randn(H, O)
@@ -23,7 +23,7 @@ class TwoLayerNet:
         ]
         self.loss_layer = SoftmaxWithLoss()
 
-        # すべての重みと勾配を配列にまとめる
+        # すべての重みと勾配をリストにまとめる
         self.params, self.grads = [], []
         for layer in self.layers:
             self.params += layer.params
