@@ -21,14 +21,14 @@ class SkipGram:
             layer = NegativeSamplingLoss(W_out, corpus, power=0.75, sample_size=5)
             self.loss_layers.append(layer)
 
-        # すべての重みと勾配を配列にまとめる
+        # すべての重みと勾配をリストにまとめる
         layers = [self.in_layer] + self.loss_layers
         self.params, self.grads = [], []
         for layer in layers:
             self.params += layer.params
             self.grads += layer.grads
 
-        # メンバ変数に単語ベクトルを設定
+        # メンバ変数に単語の分散表現を設定
         self.word_vecs = W_in
 
     def forward(self, contexts, target):

@@ -19,14 +19,14 @@ class SimpleCBOW:
         self.out_layer = MatMul(W_out)
         self.loss_layer = SoftmaxWithLoss()
 
-        # すべての重みと勾配を配列にまとめる
+        # すべての重みと勾配をリストにまとめる
         layers = [self.in_layer0, self.in_layer1, self.out_layer]
         self.params, self.grads = [], []
         for layer in layers:
             self.params += layer.params
             self.grads += layer.grads
 
-        # メンバ変数に単語ベクトルを設定
+        # メンバ変数に単語の分散表現を設定
         self.word_vecs = W_in
 
     def forward(self, contexts, target):
