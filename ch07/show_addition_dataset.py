@@ -17,3 +17,8 @@ print(x_train[0])
 print(t_train[0])
 # [ 3  0  2  0  0 11  5]
 # [ 6  0 11  7  5]
+
+print("".join([id_to_char[c] for c in x_train[0]]))
+print("".join([id_to_char[c] for c in t_train[0]]))
+# 71+118
+# _189
