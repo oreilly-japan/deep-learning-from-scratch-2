@@ -1,6 +1,7 @@
 # coding: utf-8
 import sys
 sys.path.append('..')
+import os
 from common.np import *
 
 
@@ -223,7 +224,8 @@ def eval_perplexity(model, corpus, batch_size=10, time_size=35):
     return ppl
 
 
-def eval_seq2seq(model, question, correct, id_to_char, verbos=False, is_reverse=False):
+def eval_seq2seq(model, question, correct, id_to_char,
+                 verbos=False, is_reverse=False):
     correct = correct.flatten()
     # 頭の区切り文字
     start_id = correct[0]
@@ -242,10 +244,19 @@ def eval_seq2seq(model, question, correct, id_to_char, verbos=False, is_reverse=
         colors = {'ok': '\033[92m', 'fail': '\033[91m', 'close': '\033[0m'}
         print('Q', question)
         print('T', correct)
+
+        is_windows = os.name == 'nt'
+
         if correct == guess:
-            print(colors['ok'] + '☑' + colors['close'] + ' ' + guess)
+            mark = colors['ok'] + '☑' + colors['close']
+            if is_windows:
+                mark = 'O'
+            print(mark + ' ' + guess)
         else:
-            print(colors['fail'] + '☒' + colors['close'] + ' ' + guess)
+            mark = colors['fail'] + '☒' + colors['close']
+            if is_windows:
+                mark = 'X'
+            print(mark + ' ' + guess)
         print('---')
 
     return 1 if guess == correct else 0
