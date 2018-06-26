@@ -37,7 +37,7 @@ class TwoLayerNet:
             Affine(W2, b2)
         ]
 
-        # すべての重みと勾配をリストにまとめる
+        # すべての重みをリストにまとめる
         self.params = []
         for layer in self.layers:
             self.params += layer.params
