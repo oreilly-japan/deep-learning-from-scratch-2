@@ -6,7 +6,7 @@
 
 ---
 
-本リポジトリはオライリー・ジャパン発行書籍『[ゼロから作る Deep Learning ❷](http://www.oreilly.co.jp/books/9784873118369/★)』のサポートサイトです。
+本リポジトリはオライリー・ジャパン発行書籍『[ゼロから作る Deep Learning ❷](http://www.oreilly.co.jp/books/9784873118369/)』のサポートサイトです。
 
 ## ファイル構成
 
