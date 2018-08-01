@@ -22,6 +22,7 @@
 ソースコードの解説は本書籍をご覧ください。
 
 > 学習済みの重みファイル（6章、7章で使用）は下記URLから入手可能です。
+
 > <https://www.oreilly.co.jp/pub/9784873118369/BetterRnnlm.pkl>
 
 ## 必要条件
@@ -53,4 +54,8 @@ $ python train_custom_loop.py
 
 ## 正誤表
 
-まだありません。誤植など間違いを見つけた方は、japan＠oreilly.co.jpまでお知らせください。
+本書の正誤情報は以下のページで公開しています。
+
+https://github.com/oreilly-japan/deep-learning-from-scratch-2/wiki/errata
+
+本ページに掲載されていない誤植など間違いを見つけた方は、[japan＠oreilly.co.jp](<mailto:japan＠oreilly.co.jp>)までお知らせください。
