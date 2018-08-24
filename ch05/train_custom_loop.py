@@ -2,7 +2,7 @@
 import sys
 sys.path.append('..')
 import matplotlib.pyplot as plt
-import numpy as np
+from common.np import *
 from common.optimizer import SGD
 from dataset import ptb
 from simple_rnnlm import SimpleRnnlm
