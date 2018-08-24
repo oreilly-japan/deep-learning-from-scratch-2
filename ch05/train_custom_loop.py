@@ -2,6 +2,7 @@
 import sys
 sys.path.append('..')
 import matplotlib.pyplot as plt
+import numpy
 from common.np import *
 from common.optimizer import SGD
 from dataset import ptb
@@ -68,7 +69,7 @@ for epoch in range(max_epoch):
     total_loss, loss_count = 0, 0
 
 # グラフの描画
-x = np.arange(len(ppl_list))
+x = numpy.arange(len(ppl_list))
 plt.plot(x, ppl_list, label='train')
 plt.xlabel('epochs')
 plt.ylabel('perplexity')
