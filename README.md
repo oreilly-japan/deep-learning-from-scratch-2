@@ -1,12 +1,12 @@
-# ゼロから作る Deep Learning ❷
+ゼロから作る Deep Learning ❷
+==========================
 
----
+本リポジトリは、オライリー・ジャパン発行書籍『[ゼロから作る Deep Learning ❷](https://www.oreilly.co.jp/books/9784873118369/)』のサポートサイトです。本書籍で使用するソースコードがまとめられています。ソースコードの解説は、本書籍をご覧ください。
 
-![表紙](https://raw.githubusercontent.com/oreilly-japan/deep-learning-from-scratch-2/images/deep-learning-from-scratch-2.png)
+[![book]
+(https://raw.githubusercontent.com/oreilly-japan/deep-learning-from-scratch-2/images/deep-learning-from-scratch-2.png)]
+(https://www.oreilly.co.jp/books/9784873118369/)
 
----
-
-本リポジトリはオライリー・ジャパン発行書籍『[ゼロから作る Deep Learning ❷](https://www.oreilly.co.jp/books/9784873118369/)』のサポートサイトです。
 
 ## ファイル構成
 
@@ -19,21 +19,20 @@
 |common     |共通で使用するソースコード   |
 |dataset    |データセット用のソースコード | 
 
-ソースコードの解説は本書籍をご覧ください。
+学習済みの重みファイル（6章、7章で使用）は下記URLから入手可能です。
+<https://www.oreilly.co.jp/pub/9784873118369/BetterRnnlm.pkl>
 
-> 学習済みの重みファイル（6章、7章で使用）は下記URLから入手可能です。
+## Pythonと外部ライブラリ
+ソースコードを実行するには、下記のソフトウェアが必要です。
 
-> <https://www.oreilly.co.jp/pub/9784873118369/BetterRnnlm.pkl>
-
-## 必要条件
-ソースコードを実行するには、下記のソフトウェアがインストールされている必要があります。
-
-* Python 3.x
+* Python 3.x（バージョン3系）
 * NumPy
 * Matplotlib
-* CuPy（オプション）
+ 
+また、オプションとして下記のライブラリを使用します。
 
-※Pythonのバージョンは、3系を利用します。
+* SciPy（オプション）
+* CuPy（オプション）
 
 ## 実行方法
 
