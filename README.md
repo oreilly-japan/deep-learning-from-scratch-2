@@ -1,7 +1,7 @@
 ゼロから作る Deep Learning ❷
 ==========================
 
-本リポジトリは、オライリー・ジャパン発行書籍『[ゼロから作る Deep Learning ❷](https://www.oreilly.co.jp/books/9784873118369/)』のサポートサイトです。本書籍で使用するソースコードがまとめられています。ソースコードの解説は、本書籍をご覧ください。
+本リポジトリは、オライリー・ジャパン発行書籍『[ゼロから作る Deep Learning ❷](https://www.oreilly.co.jp/books/9784873118369/)』のサポートサイトです。本書籍で使用するソースコードがまとめられています。
 
 
 [![book](https://raw.githubusercontent.com/oreilly-japan/deep-learning-from-scratch-2/images/deep-learning-from-scratch-2.png)](https://www.oreilly.co.jp/books/9784873118369/)
@@ -20,6 +20,9 @@
 
 学習済みの重みファイル（6章、7章で使用）は下記URLから入手可能です。
 <https://www.oreilly.co.jp/pub/9784873118369/BetterRnnlm.pkl>
+
+ソースコードの解説は、本書籍をご覧ください。
+
 
 ## Pythonと外部ライブラリ
 ソースコードを実行するには、下記のソフトウェアが必要です。
