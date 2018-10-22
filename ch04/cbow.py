@@ -1,7 +1,7 @@
 # coding: utf-8
 import sys
 sys.path.append('..')
-import numpy as np
+from common.np import *  # import numpy as np
 from common.layers import Embedding
 from ch04.negative_sampling_layer import NegativeSamplingLoss
 
