@@ -125,7 +125,7 @@ def ppmi(C, verbose=False, eps = 1e-8):
     '''PPMI（正の相互情報量）の作成
 
     :param C: 共起行列
-    :param verbose: 進行状況を出力するかどうか    
+    :param verbose: 進行状況を出力するかどうか
     :return:
     '''
     M = np.zeros_like(C, dtype=np.float32)
@@ -147,11 +147,11 @@ def ppmi(C, verbose=False, eps = 1e-8):
 
 
 def create_contexts_target(corpus, window_size=1):
-    '''one-hot表現への変換を行う
+    '''コンテキストとターゲットの作成
 
-    :param words: 単語IDのNumPy配列
-    :param vocab_size: 語彙数
-    :return: one-hot表現に変換後のNumPy配列
+    :param corpus: コーパス（単語IDのリスト）
+    :param window_size: ウィンドウサイズ（ウィンドウサイズが1のときは、単語の左右1単語がコンテキスト）
+    :return:
     '''
     target = corpus[window_size:-window_size]
     contexts = []
