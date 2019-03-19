@@ -11,7 +11,7 @@ if __name__ == '__main__':
     model = Rnnlm()
     #model = BetterRnnlm()
 
-    # 学習済みのパラメータの読み込み
+    # 학습된 매개변수 읽기
     model.load_params()
 
     corpus, _, _ = ptb.load_data('test')
