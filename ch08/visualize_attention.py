@@ -11,7 +11,7 @@ from attention_seq2seq import AttentionSeq2seq
     sequence.load_data('date.txt')
 char_to_id, id_to_char = sequence.get_vocab()
 
-# Reverse input
+# 입력 문장 반전
 x_train, x_test = x_train[:, ::-1], x_test[:, ::-1]
 
 vocab_size = len(char_to_id)
@@ -49,7 +49,7 @@ for _ in range(5):
     d = np.array(d)
     attention_map = d.reshape(d.shape[0], d.shape[2])
 
-    # reverse for print
+    # 출력하기 위해 반전
     attention_map = attention_map[:,::-1]
     x = x[:,::-1]
 
