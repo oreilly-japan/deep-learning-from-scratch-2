@@ -62,7 +62,7 @@ for epoch in range(max_epoch):
 
     # 에폭마다 퍼플렉서티 평가
     ppl = np.exp(total_loss / loss_count)
-    print('| epoch %d | perplexity %.2f'
+    print('| 에폭 %d | 퍼플렉서티 %.2f'
           % (epoch+1, ppl))
     ppl_list.append(float(ppl))
     total_loss, loss_count = 0, 0
