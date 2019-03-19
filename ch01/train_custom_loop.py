@@ -1,6 +1,6 @@
 # coding: utf-8
 import sys
-sys.path.append('..')  # 親ディレクトリのファイルをインポートするための設定
+sys.path.append('..')  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
 import numpy as np
 from common.optimizer import SGD
 from dataset import spiral
@@ -8,17 +8,18 @@ import matplotlib.pyplot as plt
 from two_layer_net import TwoLayerNet
 
 
-# ハイパーパラメータの設定
+# 하이퍼파라미터 설정
 max_epoch = 300
 batch_size = 30
 hidden_size = 10
 learning_rate = 1.0
 
+# 데이터 읽기, 모델과 옵티마이저 생성
 x, t = spiral.load_data()
 model = TwoLayerNet(input_size=2, hidden_size=hidden_size, output_size=3)
 optimizer = SGD(lr=learning_rate)
 
-# 学習で使用する変数
+# 학습에 사용하는 변수
 data_size = len(x)
 max_iters = data_size // batch_size
 total_loss = 0
@@ -26,7 +27,7 @@ loss_count = 0
 loss_list = []
 
 for epoch in range(max_epoch):
-    # データのシャッフル
+    # 데이터 뒤섞기
     idx = np.random.permutation(data_size)
     x = x[idx]
     t = t[idx]
@@ -35,7 +36,7 @@ for epoch in range(max_epoch):
         batch_x = x[iters*batch_size:(iters+1)*batch_size]
         batch_t = t[iters*batch_size:(iters+1)*batch_size]
 
-        # 勾配を求め、パラメータを更新
+        # 기울기를 구해 매개변수 갱신
         loss = model.forward(batch_x, batch_t)
         model.backward()
         optimizer.update(model.params, model.grads)
@@ -43,7 +44,7 @@ for epoch in range(max_epoch):
         total_loss += loss
         loss_count += 1
 
-        # 定期的に学習経過を出力
+        # 정기적으로 학습 경과 출력
         if (iters+1) % 10 == 0:
             avg_loss = total_loss / loss_count
             print('| epoch %d |  iter %d / %d | loss %.2f'
@@ -52,13 +53,13 @@ for epoch in range(max_epoch):
             total_loss, loss_count = 0, 0
 
 
-# 学習結果のプロット
+# 학습 결과 플롯
 plt.plot(np.arange(len(loss_list)), loss_list, label='train')
 plt.xlabel('iterations (x10)')
 plt.ylabel('loss')
 plt.show()
 
-# 境界領域のプロット
+# 경계 영역 플롯
 h = 0.001
 x_min, x_max = x[:, 0].min() - .1, x[:, 0].max() + .1
 y_min, y_max = x[:, 1].min() - .1, x[:, 1].max() + .1
@@ -70,7 +71,7 @@ Z = predict_cls.reshape(xx.shape)
 plt.contourf(xx, yy, Z)
 plt.axis('off')
 
-# データ点のプロット
+# 데이터점 플롯
 x, t = spiral.load_data()
 N = 100
 CLS_NUM = 3
