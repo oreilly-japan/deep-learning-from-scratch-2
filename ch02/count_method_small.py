@@ -15,12 +15,12 @@ W = ppmi(C)
 # SVD
 U, S, V = np.linalg.svd(W)
 
-np.set_printoptions(precision=3)  # 有効桁３桁で表示
+np.set_printoptions(precision=3)  # 유효 자릿수를 세 자리로 표시
 print(C[0])
 print(W[0])
 print(U[0])
 
-# plot
+# 플롯
 for word, word_id in word_to_id.items():
     plt.annotate(word, (U[word_id, 0], U[word_id, 1]))
 plt.scatter(U[:,0], U[:,1], alpha=0.5)
