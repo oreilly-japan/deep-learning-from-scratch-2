@@ -27,7 +27,7 @@ def cross_entropy_error(y, t):
         t = t.reshape(1, t.size)
         y = y.reshape(1, y.size)
         
-    # 教師データがone-hot-vectorの場合、正解ラベルのインデックスに変換
+    # 정답 데이터가 원핫 벡터일 경우 정답 레이블 인덱스로 변환
     if t.size == y.size:
         t = t.argmax(axis=1)
              
