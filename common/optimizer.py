@@ -6,7 +6,7 @@ from common.np import *
 
 class SGD:
     '''
-    確率的勾配降下法（Stochastic Gradient Descent）
+    확률적 경사하강법(Stochastic Gradient Descent)
     '''
     def __init__(self, lr=0.01):
         self.lr = lr
@@ -18,7 +18,7 @@ class SGD:
 
 class Momentum:
     '''
-    Momentum SGD
+    모멘텀 SGG(Momentum SGD)
     '''
     def __init__(self, lr=0.01, momentum=0.9):
         self.lr = lr
@@ -38,7 +38,8 @@ class Momentum:
 
 class Nesterov:
     '''
-    Nesterov's Accelerated Gradient (http://arxiv.org/abs/1212.0901)
+    네스테로프 가속 경사(NAG; Nesterov's Accelerated Gradient) (http://arxiv.org/abs/1212.0901)
+    '네스테로프 모멘텀 최적화'라고도 한다.
     '''
     def __init__(self, lr=0.01, momentum=0.9):
         self.lr = lr
