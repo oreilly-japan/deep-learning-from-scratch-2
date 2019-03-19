@@ -26,7 +26,7 @@ class Trainer:
 
         start_time = time.time()
         for epoch in range(max_epoch):
-            # シャッフル
+            # 뒤섞기
             idx = numpy.random.permutation(numpy.arange(data_size))
             x = x[idx]
             t = t[idx]
@@ -35,21 +35,21 @@ class Trainer:
                 batch_x = x[iters*batch_size:(iters+1)*batch_size]
                 batch_t = t[iters*batch_size:(iters+1)*batch_size]
 
-                # 勾配を求め、パラメータを更新
+                # 기울기 구해 매개변수 갱신
                 loss = model.forward(batch_x, batch_t)
                 model.backward()
-                params, grads = remove_duplicate(model.params, model.grads)  # 共有された重みを1つに集約
+                params, grads = remove_duplicate(model.params, model.grads)  # 공유된 가중치를 하나로 모음
                 if max_grad is not None:
                     clip_grads(grads, max_grad)
                 optimizer.update(params, grads)
                 total_loss += loss
                 loss_count += 1
 
-                # 評価
+                # 평가
                 if (eval_interval is not None) and (iters % eval_interval) == 0:
                     avg_loss = total_loss / loss_count
                     elapsed_time = time.time() - start_time
-                    print('| epoch %d |  iter %d / %d | time %d[s] | loss %.2f'
+                    print('| 에폭 %d |  반복 %d / %d | 시간 %d[s] | 손실 %.2f'
                           % (self.current_epoch + 1, iters + 1, max_iters, elapsed_time, avg_loss))
                     self.loss_list.append(float(avg_loss))
                     total_loss, loss_count = 0, 0
@@ -61,8 +61,8 @@ class Trainer:
         if ylim is not None:
             plt.ylim(*ylim)
         plt.plot(x, self.loss_list, label='train')
-        plt.xlabel('iterations (x' + str(self.eval_interval) + ')')
-        plt.ylabel('loss')
+        plt.xlabel('반복 (x' + str(self.eval_interval) + ')')
+        plt.ylabel('손실')
         plt.show()
 
 
@@ -81,7 +81,7 @@ class RnnlmTrainer:
 
         data_size = len(x)
         jump = data_size // batch_size
-        offsets = [i * jump for i in range(batch_size)]  # バッチの各サンプルの読み込み開始位置
+        offsets = [i * jump for i in range(batch_size)]  # 배치에서 각 샘플을 읽기 시작하는 위치
 
         for time in range(time_size):
             for i, offset in enumerate(offsets):
@@ -106,21 +106,21 @@ class RnnlmTrainer:
             for iters in range(max_iters):
                 batch_x, batch_t = self.get_batch(xs, ts, batch_size, time_size)
 
-                # 勾配を求め、パラメータを更新
+                # 기울기를 구해 매개변수 갱신
                 loss = model.forward(batch_x, batch_t)
                 model.backward()
-                params, grads = remove_duplicate(model.params, model.grads)  # 共有された重みを1つに集約
+                params, grads = remove_duplicate(model.params, model.grads)  # 공유된 가중치를 하나로 모음
                 if max_grad is not None:
                     clip_grads(grads, max_grad)
                 optimizer.update(params, grads)
                 total_loss += loss
                 loss_count += 1
 
-                # パープレキシティの評価
+                # 퍼플렉서티 평가
                 if (eval_interval is not None) and (iters % eval_interval) == 0:
                     ppl = np.exp(total_loss / loss_count)
                     elapsed_time = time.time() - start_time
-                    print('| epoch %d |  iter %d / %d | time %d[s] | perplexity %.2f'
+                    print('| 에폭 %d |  반복 %d / %d | 시간 %d[s] | 퍼플렉서티 %.2f'
                           % (self.current_epoch + 1, iters + 1, max_iters, elapsed_time, ppl))
                     self.ppl_list.append(float(ppl))
                     total_loss, loss_count = 0, 0
@@ -132,15 +132,15 @@ class RnnlmTrainer:
         if ylim is not None:
             plt.ylim(*ylim)
         plt.plot(x, self.ppl_list, label='train')
-        plt.xlabel('iterations (x' + str(self.eval_interval) + ')')
-        plt.ylabel('perplexity')
+        plt.xlabel('반복 (x' + str(self.eval_interval) + ')')
+        plt.ylabel('퍼플렉서티')
         plt.show()
 
 
 def remove_duplicate(params, grads):
     '''
-    パラメータ配列中の重複する重みをひとつに集約し、
-    その重みに対応する勾配を加算する
+    매개변수 배열 중 중복되는 가중치를 하나로 모아
+    그 가중치에 대응하는 기울기를 더한다.
     '''
     params, grads = params[:], grads[:]  # copy list
 
@@ -150,13 +150,13 @@ def remove_duplicate(params, grads):
 
         for i in range(0, L - 1):
             for j in range(i + 1, L):
-                # 重みを共有する場合
+                # 가중치 공유 시
                 if params[i] is params[j]:
-                    grads[i] += grads[j]  # 勾配の加算
+                    grads[i] += grads[j]  # 경사를 더함
                     find_flg = True
                     params.pop(j)
                     grads.pop(j)
-                # 転置行列として重みを共有する場合（weight tying）
+                # 가중치를 전치행렬로 공유하는 경우(weight tying)
                 elif params[i].ndim == 2 and params[j].ndim == 2 and \
                      params[i].T.shape == params[j].shape and np.all(params[i].T == params[j]):
                     grads[i] += grads[j].T
