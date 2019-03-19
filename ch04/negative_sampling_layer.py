@@ -63,8 +63,8 @@ class UnigramSampler:
                 p /= p.sum()
                 negative_sample[i, :] = np.random.choice(self.vocab_size, size=self.sample_size, replace=False, p=p)
         else:
-            # GPU(cupy）で計算するときは、速度を優先
-            # 負例にターゲットが含まれるケースがある
+            # GPU(cupy）로 계산할 때는 속도를 우선한다.
+            # 부정적 예에 타깃이 포함될 수 있다.
             negative_sample = np.random.choice(self.vocab_size, size=(batch_size, self.sample_size),
                                                replace=True, p=self.word_p)
 
@@ -87,12 +87,12 @@ class NegativeSamplingLoss:
         batch_size = target.shape[0]
         negative_sample = self.sampler.get_negative_sample(target)
 
-        # 正例のフォワード
+        # 긍정적 예 순전파
         score = self.embed_dot_layers[0].forward(h, target)
         correct_label = np.ones(batch_size, dtype=np.int32)
         loss = self.loss_layers[0].forward(score, correct_label)
 
-        # 負例のフォワード
+        # 부정적 예 순전파
         negative_label = np.zeros(batch_size, dtype=np.int32)
         for i in range(self.sample_size):
             negative_target = negative_sample[:, i]
