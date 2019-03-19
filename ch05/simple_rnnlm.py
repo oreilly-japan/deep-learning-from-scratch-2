@@ -10,7 +10,7 @@ class SimpleRnnlm:
         V, D, H = vocab_size, wordvec_size, hidden_size
         rn = np.random.randn
 
-        # 重みの初期化
+        # 가중치 초기화
         embed_W = (rn(V, D) / 100).astype('f')
         rnn_Wx = (rn(D, H) / np.sqrt(D)).astype('f')
         rnn_Wh = (rn(H, H) / np.sqrt(H)).astype('f')
@@ -18,7 +18,7 @@ class SimpleRnnlm:
         affine_W = (rn(H, V) / np.sqrt(H)).astype('f')
         affine_b = np.zeros(V).astype('f')
 
-        # レイヤの生成
+        # 계층 생성
         self.layers = [
             TimeEmbedding(embed_W),
             TimeRNN(rnn_Wx, rnn_Wh, rnn_b, stateful=True),
@@ -27,7 +27,7 @@ class SimpleRnnlm:
         self.loss_layer = TimeSoftmaxWithLoss()
         self.rnn_layer = self.layers[1]
 
-        # すべての重みと勾配をリストにまとめる
+        # 모든 가중치와 기울기를 리스트에 모은다.
         self.params, self.grads = [], []
         for layer in self.layers:
             self.params += layer.params
