@@ -24,11 +24,11 @@ def preprocess(text):
 
 
 def cos_similarity(x, y, eps=1e-8):
-    '''コサイン類似度の算出
+    '''코사인 유사도 산출
 
-    :param x: ベクトル
-    :param y: ベクトル
-    :param eps: ”0割り”防止のための微小値
+    :param x: 벡터
+    :param y: 벡터
+    :param eps: '0으로 나누기'를 방지하기 위한 작은 값
     :return:
     '''
     nx = x / (np.sqrt(np.sum(x ** 2)) + eps)
@@ -37,28 +37,30 @@ def cos_similarity(x, y, eps=1e-8):
 
 
 def most_similar(query, word_to_id, id_to_word, word_matrix, top=5):
-    '''類似単語の検索
+    '''유사 단어 검색
 
-    :param query: クエリ（テキスト）
-    :param word_to_id: 単語から単語IDへのディクショナリ
-    :param id_to_word: 単語IDから単語へのディクショナリ
-    :param word_matrix: 単語ベクトルをまとめた行列。各行に対応する単語のベクトルが格納されていることを想定する
-    :param top: 上位何位まで表示するか
+    :param query: 쿼리(텍스트)
+    :param word_to_id: 단어에서 단어 ID로 변환하는 딕셔너리
+    :param id_to_word: 단어 ID에서 단어로 변환하는 딕셔너리
+    :param word_matrix: 단어 벡터를 정리한 행렬. 각 행에 해당 단어 벡터가 저장되어 있다고 가정한다.
+    :param top: 상위 몇 개까지 출력할 지 지정
     '''
     if query not in word_to_id:
-        print('%s is not found' % query)
+        print('%s(을)를 찾을 수 없습니다.' % query)
         return
 
     print('\n[query] ' + query)
     query_id = word_to_id[query]
     query_vec = word_matrix[query_id]
 
+    # 코사인 유사도 계산
     vocab_size = len(id_to_word)
 
     similarity = np.zeros(vocab_size)
     for i in range(vocab_size):
         similarity[i] = cos_similarity(word_matrix[i], query_vec)
 
+    # 코사인 유사도를 기준으로 내림차순으로 출력
     count = 0
     for i in (-1 * similarity).argsort():
         if id_to_word[i] == query:
@@ -71,11 +73,11 @@ def most_similar(query, word_to_id, id_to_word, word_matrix, top=5):
 
 
 def convert_one_hot(corpus, vocab_size):
-    '''one-hot表現への変換
+    '''원핫 표현으로 변환
 
-    :param corpus: 単語IDのリスト（1次元もしくは2次元のNumPy配列）
-    :param vocab_size: 語彙数
-    :return: one-hot表現（2次元もしくは3次元のNumPy配列）
+    :param corpus: 단어 ID 목록(1차원 또는 2차원 넘파이 배열)
+    :param vocab_size: 어휘 수
+    :return: 원핫 표현(2차원 또는 3차원 넘파이 배열)
     '''
     N = corpus.shape[0]
 
@@ -95,12 +97,12 @@ def convert_one_hot(corpus, vocab_size):
 
 
 def create_co_matrix(corpus, vocab_size, window_size=1):
-    '''共起行列の作成
+    '''동시발생 행렬 생성
 
-    :param corpus: コーパス（単語IDのリスト）
-    :param vocab_size:語彙数
-    :param window_size:ウィンドウサイズ（ウィンドウサイズが1のときは、単語の左右1単語がコンテキスト）
-    :return: 共起行列
+    :param corpus: 말뭉치(단어 ID 목록)
+    :param vocab_size: 어휘 수
+    :param window_size: 윈도우 크기(윈도우 크기가 1이면 타깃 단어 좌우 한 단어씩이 맥락에 포함)
+    :return: 동시발생 행렬
     '''
     corpus_size = len(corpus)
     co_matrix = np.zeros((vocab_size, vocab_size), dtype=np.int32)
@@ -122,10 +124,10 @@ def create_co_matrix(corpus, vocab_size, window_size=1):
 
 
 def ppmi(C, verbose=False, eps = 1e-8):
-    '''PPMI（正の相互情報量）の作成
+    '''PPMI(점별 상호정보량) 생성
 
-    :param C: 共起行列
-    :param verbose: 進行状況を出力するかどうか
+    :param C: 동시발생 행렬
+    :param verbose: 진행 상황을 출력할지 여부
     :return:
     '''
     M = np.zeros_like(C, dtype=np.float32)
@@ -142,15 +144,15 @@ def ppmi(C, verbose=False, eps = 1e-8):
             if verbose:
                 cnt += 1
                 if cnt % (total//100) == 0:
-                    print('%.1f%% done' % (100*cnt/total))
+                    print('%.1f%% 완료' % (100*cnt/total))
     return M
 
 
 def create_contexts_target(corpus, window_size=1):
-    '''コンテキストとターゲットの作成
+    '''맥락과 타깃 생성
 
-    :param corpus: コーパス（単語IDのリスト）
-    :param window_size: ウィンドウサイズ（ウィンドウサイズが1のときは、単語の左右1単語がコンテキスト）
+    :param corpus: 말뭉치(단어 ID 목록)
+    :param window_size: 윈도우 크기(윈도우 크기가 1이면 타깃 단어 좌우 한 단어씩이 맥락에 포함)
     :return:
     '''
     target = corpus[window_size:-window_size]
@@ -194,7 +196,7 @@ def clip_grads(grads, max_norm):
 
 
 def eval_perplexity(model, corpus, batch_size=10, time_size=35):
-    print('evaluating perplexity ...')
+    print('퍼플렉서티 평가 중 ...')
     corpus_size = len(corpus)
     total_loss, loss_cnt = 0, 0
     max_iters = (corpus_size - 1) // (batch_size * time_size)
@@ -227,12 +229,12 @@ def eval_perplexity(model, corpus, batch_size=10, time_size=35):
 def eval_seq2seq(model, question, correct, id_to_char,
                  verbos=False, is_reverse=False):
     correct = correct.flatten()
-    # 頭の区切り文字
+    # 머릿글자
     start_id = correct[0]
     correct = correct[1:]
     guess = model.generate(question, start_id, len(correct))
 
-    # 文字列へ変換
+    # 문자열로 변환
     question = ''.join([id_to_char[int(c)] for c in question.flatten()])
     correct = ''.join([id_to_char[int(c)] for c in correct])
     guess = ''.join([id_to_char[int(c)] for c in guess])
