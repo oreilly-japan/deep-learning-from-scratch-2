@@ -99,9 +99,9 @@ class LSTM:
 
         Parameters
         ----------
-        Wx: 入力`x`用の重みパラーメタ（4つ分の重みをまとめる）
-        Wh: 隠れ状態`h`用の重みパラメータ（4つ分の重みをまとめる）
-        b: バイアス（4つ分のバイアスをまとめる）
+        Wx: 입력 x에 대한 가중치 매개변수(4개분의 가중치가 담겨 있음)
+        Wh: 은닉 상태 h에 대한 가장추 매개변수(4개분의 가중치가 담겨 있음)
+        b: 편향（4개분의 편향이 담겨 있음）
         '''
         self.params = [Wx, Wh, b]
         self.grads = [np.zeros_like(Wx), np.zeros_like(Wh), np.zeros_like(b)]
@@ -302,19 +302,19 @@ class TimeSoftmaxWithLoss:
     def forward(self, xs, ts):
         N, T, V = xs.shape
 
-        if ts.ndim == 3:  # 教師ラベルがone-hotベクトルの場合
+        if ts.ndim == 3:  # 정답 레이블이 원핫 벡터인 경우
             ts = ts.argmax(axis=2)
 
         mask = (ts != self.ignore_label)
 
-        # バッチ分と時系列分をまとめる（reshape）
+        # 배치용과 시계열용을 정리(reshape)
         xs = xs.reshape(N * T, V)
         ts = ts.reshape(N * T)
         mask = mask.reshape(N * T)
 
         ys = softmax(xs)
         ls = np.log(ys[np.arange(N * T), ts])
-        ls *= mask  # ignore_labelに該当するデータは損失を0にする
+        ls *= mask  # ignore_label에 해당하는 데이터는 손실을 0으로 설정
         loss = -np.sum(ls)
         loss /= mask.sum()
 
@@ -328,7 +328,7 @@ class TimeSoftmaxWithLoss:
         dx[np.arange(N * T), ts] -= 1
         dx *= dout
         dx /= mask.sum()
-        dx *= mask[:, np.newaxis]  # ignore_labelに該当するデータは勾配を0にする
+        dx *= mask[:, np.newaxis]  # ignore_labelㅇㅔ 해당하는 데이터는 기울기를 0으로 설정
 
         dx = dx.reshape((N, T, V))
 
@@ -385,15 +385,15 @@ class TimeBiLSTM:
         return dxs
 
 # ====================================================================== #
-# 以下に示すレイヤは、本書で説明をおこなっていないレイヤの実装もしくは
-# 処理速度よりも分かりやすさを優先したレイヤの実装です。
+# 이 아래의 계층들은 책에서 설명하지 않았거나
+# 처리 속도보다는 쉽게 이해할 수 있도록 구현했습니다.
 #
-# TimeSigmoidWithLoss: 時系列データのためのシグモイド損失レイヤ
-# GRU: GRUレイヤ
-# TimeGRU: 時系列データのためのGRUレイヤ
-# BiTimeLSTM: 双方向LSTMレイヤ
-# Simple_TimeSoftmaxWithLoss：単純なTimeSoftmaxWithLossレイヤの実装
-# Simple_TimeAffine: 単純なTimeAffineレイヤの実装
+# TimeSigmoidWithLoss: 시계열 데이터용 시그모이드 + 손실 계층
+# GRU: GRU 계층
+# TimeGRU: 시계열 데이터용 GRU 계층
+# BiTimeLSTM: 양방향 LSTM 계층
+# Simple_TimeSoftmaxWithLoss：간단한 TimeSoftmaxWithLoss 계층의 구현
+# Simple_TimeAffine: 간단한 TimeAffine 계층의 구현
 # ====================================================================== #
 
 
@@ -435,8 +435,8 @@ class GRU:
 
         Parameters
         ----------
-        Wx: 入力`x`用の重みパラーメタ（3つ分の重みをまとめる）
-        Wh: 隠れ状態`h`用の重みパラメータ（3つ分の重みをまとめる）
+        Wx: 입력 x에 대한 가중치 매개변수(3개 분의 가중치가 담겨 있음)
+        Wh: 은닉 상태 h에 대한 가중치 매개변수(3개 분의 가중치가 담겨 있음)
         '''
         self.Wx, self.Wh = Wx, Wh
         self.dWx, self.dWh = None, None
