@@ -1,6 +1,6 @@
 # coding: utf-8
 import sys
-sys.path.append('..')  # 부모 디렉터리의 파일을 가져올 수 있도록 준비함
+sys.path.append('..')  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
 from dataset import spiral
 import matplotlib.pyplot as plt
 
