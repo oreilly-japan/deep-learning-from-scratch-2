@@ -12,14 +12,14 @@ from ch07.seq2seq import Seq2seq
 from ch07.peeky_seq2seq import PeekySeq2seq
 
 
-# データの読み込み
+# 데이터 읽기
 (x_train, t_train), (x_test, t_test) = sequence.load_data('date.txt')
 char_to_id, id_to_char = sequence.get_vocab()
 
-# 入力文を反転
+# 입력 문장 반전
 x_train, x_test = x_train[:, ::-1], x_test[:, ::-1]
 
-# ハイパーパラメータの設定
+# 하이퍼파라미터 설정
 vocab_size = len(char_to_id)
 wordvec_size = 16
 hidden_size = 256
@@ -48,15 +48,15 @@ for epoch in range(max_epoch):
 
     acc = float(correct_num) / len(x_test)
     acc_list.append(acc)
-    print('val acc %.3f%%' % (acc * 100))
+    print('정확도 %.3f%%' % (acc * 100))
 
 
 model.save_params()
 
-# グラフの描画
+# 그래프 그리기
 x = np.arange(len(acc_list))
 plt.plot(x, acc_list, marker='o')
-plt.xlabel('epochs')
-plt.ylabel('accuracy')
+plt.xlabel('에폭')
+plt.ylabel('정확도')
 plt.ylim(-0.05, 1.05)
 plt.show()
