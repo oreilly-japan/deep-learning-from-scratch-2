@@ -267,7 +267,7 @@ def eval_seq2seq(model, question, correct, id_to_char,
 def analogy(a, b, c, word_to_id, id_to_word, word_matrix, top=5, answer=None):
     for word in (a, b, c):
         if word not in word_to_id:
-            print('%s is not found' % word)
+            print('%s(을)를 찾을 수 없습니다.' % word)
             return
 
     print('\n[analogy] ' + a + ':' + b + ' = ' + c + ':?')
