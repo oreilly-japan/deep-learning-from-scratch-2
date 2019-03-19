@@ -14,12 +14,12 @@ with open(pkl_file, 'rb') as f:
     word_to_id = params['word_to_id']
     id_to_word = params['id_to_word']
 
-# most similar task
+# 가장 비슷한(most similar) 단어 뽑기
 querys = ['you', 'year', 'car', 'toyota']
 for query in querys:
     most_similar(query, word_to_id, id_to_word, word_vecs, top=5)
 
-# analogy task
+# 유추(analogy) 작업
 print('-'*50)
 analogy('king', 'man', 'queen',  word_to_id, id_to_word, word_vecs)
 analogy('take', 'took', 'go',  word_to_id, id_to_word, word_vecs)
