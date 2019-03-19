@@ -33,13 +33,13 @@ def load_data(file_name='addition.txt', seed=1984):
         questions.append(line[:idx])
         answers.append(line[idx:-1])
 
-    # create vocab dict
+    # 어휘 사전 생성
     for i in range(len(questions)):
         q, a = questions[i], answers[i]
         _update_vocab(q)
         _update_vocab(a)
 
-    # create numpy array
+    # 넘파이 배열 생성
     x = numpy.zeros((len(questions), len(questions[0])), dtype=numpy.int)
     t = numpy.zeros((len(questions), len(answers[0])), dtype=numpy.int)
 
@@ -48,7 +48,7 @@ def load_data(file_name='addition.txt', seed=1984):
     for i, sentence in enumerate(answers):
         t[i] = [char_to_id[c] for c in list(sentence)]
 
-    # shuffle
+    # 뒤섞기
     indices = numpy.arange(len(x))
     if seed is not None:
         numpy.random.seed(seed)
@@ -56,7 +56,7 @@ def load_data(file_name='addition.txt', seed=1984):
     x = x[indices]
     t = t[indices]
 
-    # 10% for validation set
+    # 검증 데이터셋으로 10% 할당
     split_at = len(x) - len(x) // 10
     (x_train, x_test) = x[:split_at], x[split_at:]
     (t_train, t_test) = t[:split_at], t[split_at:]
