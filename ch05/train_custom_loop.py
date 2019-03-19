@@ -25,7 +25,7 @@ vocab_size = int(max(corpus) + 1)
 xs = corpus[:-1]  # 입력
 ts = corpus[1:]   # 출력(정답 레이블)
 data_size = len(xs)
-print('corpus size: %d, vocabulary size: %d' % (corpus_size, vocab_size))
+print('말뭉치 크기: %d, 어휘 수: %d' % (corpus_size, vocab_size))
 
 # 학습 시 사용하는 변수
 max_iters = data_size // (batch_size * time_size)
