@@ -47,7 +47,7 @@ for epoch in range(max_epoch):
         # 정기적으로 학습 경과 출력
         if (iters+1) % 10 == 0:
             avg_loss = total_loss / loss_count
-            print('| epoch %d |  iter %d / %d | loss %.2f'
+            print('| 에폭 %d |  반복 %d / %d | 손실 %.2f'
                   % (epoch + 1, iters + 1, max_iters, avg_loss))
             loss_list.append(avg_loss)
             total_loss, loss_count = 0, 0
@@ -55,8 +55,8 @@ for epoch in range(max_epoch):
 
 # 학습 결과 플롯
 plt.plot(np.arange(len(loss_list)), loss_list, label='train')
-plt.xlabel('iterations (x10)')
-plt.ylabel('loss')
+plt.xlabel('반복 (x10)')
+plt.ylabel('손실')
 plt.show()
 
 # 경계 영역 플롯
