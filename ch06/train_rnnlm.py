@@ -37,7 +37,7 @@ trainer.plot(ylim=(0, 500))
 # 테스트 데이터로 평가
 model.reset_state()
 ppl_test = eval_perplexity(model, corpus_test)
-print('test perplexity: ', ppl_test)
+print('테스트 퍼플렉서티: ', ppl_test)
 
 # 매개변수 저장
 model.save_params()
