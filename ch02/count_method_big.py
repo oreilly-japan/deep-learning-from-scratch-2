@@ -18,12 +18,12 @@ W = ppmi(C, verbose=True)
 
 print('calculating SVD ...')
 try:
-    # truncated SVD (fast!)
+    # truncated SVD (빠르다!)
     from sklearn.utils.extmath import randomized_svd
     U, S, V = randomized_svd(W, n_components=wordvec_size, n_iter=5,
                              random_state=None)
 except ImportError:
-    # SVD (slow)
+    # SVD (느리다)
     U, S, V = np.linalg.svd(W)
 
 word_vecs = U[:, :wordvec_size]
