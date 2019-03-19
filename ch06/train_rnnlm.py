@@ -8,7 +8,7 @@ from dataset import ptb
 from rnnlm import Rnnlm
 
 
-# ハイパーパラメータの設定
+# 하이퍼파라미터 설정
 batch_size = 20
 wordvec_size = 100
 hidden_size = 100  # RNN의 은닉 상태 벡터의 원소 수
