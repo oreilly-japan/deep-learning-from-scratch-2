@@ -11,8 +11,8 @@ vocab_size = len(word_to_id)
 C = create_co_matrix(corpus, vocab_size)
 W = ppmi(C)
 
-np.set_printoptions(precision=3)  # 有効桁３桁で表示
-print('covariance matrix')
+np.set_printoptions(precision=3)  # 유효 자릿수를 세 자리로 표시
+print('동시발생 행렬')
 print(C)
 print('-'*50)
 print('PPMI')
