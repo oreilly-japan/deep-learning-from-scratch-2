@@ -50,7 +50,7 @@ for epoch in range(max_epoch):
 
     acc = float(correct_num) / len(x_test)
     acc_list.append(acc)
-    print('정확도 %.3f%%' % (acc * 100))
+    print('검증 정확도 %.3f%%' % (acc * 100))
 
 # 그래프 그리기
 x = np.arange(len(acc_list))
