@@ -48,7 +48,7 @@ for epoch in range(max_epoch):
 
     model.reset_state()
     ppl = eval_perplexity(model, corpus_val)
-    print('유효 퍼플렉서티: ', ppl)
+    print('검증 퍼플렉서티: ', ppl)
 
     if best_ppl > ppl:
         best_ppl = ppl
