@@ -1,44 +1,45 @@
-ゼロから作る Deep Learning ❷
+『밑바닥부터 시작하는 딥러닝 2』 (원서 : ゼロから作る Deep Learning ❷)
 ==========================
 
-本リポジトリは、オライリー・ジャパン発行書籍『[ゼロから作る Deep Learning ❷](https://www.oreilly.co.jp/books/9784873118369/)』のサポートサイトです。本書籍で使用するソースコードがまとめられています。
+이 저장소는 『[밑바닥부터 시작하는 딥러닝 2](http://www.hanbit.co.kr/store/books/look.php?p_code=B8475831198)』(한빛미디어, 2019)의 지원 사이트입니다.
+
+--- 작업 중 ---
+
+## 새소식
 
 
-[![book](https://raw.githubusercontent.com/oreilly-japan/deep-learning-from-scratch-2/images/deep-learning-from-scratch-2.png)](https://www.oreilly.co.jp/books/9784873118369/)
+## 파일 구성
 
-
-## ファイル構成
-
-|フォルダ名 |説明                         |
+|폴더 이름 |설명                         |
 |:--        |:--                          |
-|ch01       |1章で使用するソースコード    |
-|ch02       |2章で使用するソースコード    |
+|ch01       |1장에서 사용하는 소스 코드 |
+|ch02       |2장에서 사용하는 소스 코드    |
 |...        |...                          |
-|ch08       |8章で使用するソースコード    |
-|common     |共通で使用するソースコード   |
-|dataset    |データセット用のソースコード | 
+|ch08       |8장에서 사용하는 소스 코드    |
+|common     |공통으로 사용하는 소스 코드  |
+|dataset    |데이터셋용 소스 코드 |
 
-学習済みの重みファイル（6章、7章で使用）は下記URLから入手可能です。
+학습된 가중치 파일(6장, 7장에서 사용)은 아래 URL에서 받을 수 있습니다.
 <https://www.oreilly.co.jp/pub/9784873118369/BetterRnnlm.pkl>
 
-ソースコードの解説は、本書籍をご覧ください。
+소스 코드에 관한 설명은 책을 참고하세요.
 
+## 요구사항
+소스 코드를 실행하려면 아래의 소프트웨어가 설치되어 있어야 합니다.
 
-## Pythonと外部ライブラリ
-ソースコードを実行するには、下記のソフトウェアが必要です。
-
-* Python 3.x（バージョン3系）
+* 파이썬 3.x
 * NumPy
 * Matplotlib
  
-また、オプションとして下記のライブラリを使用します。
+또한 선택사항으로 다음 라이브러리를 사용합니다.
 
-* SciPy（オプション）
-* CuPy（オプション）
+* SciPy
+* CuPy
 
-## 実行方法
 
-各章のフォルダへ移動して、Pythonコマンドを実行します。
+## 실행방법
+
+각 장의 디렉터리로 이동한 후 python 명령을 실행하세요(**다른 디렉터리에서는 제대로 실행되지 않을 수 있습니다!**).
 
 ```
 $ cd ch01
@@ -48,15 +49,20 @@ $ cd ../ch05
 $ python train_custom_loop.py
 ```
 
-## ライセンス
+## 라이선스
 
-本リポジトリのソースコードは[MITライセンス](http://www.opensource.org/licenses/MIT)です。
-商用・非商用問わず、自由にご利用ください。
+이 저장소의 소스 코드는 [MIT 라이선스](http://www.opensource.org/licenses/MIT)를 따릅니다.
+비상용뿐 아니라 상용으로도 자유롭게 이용하실 수 있습니다.
 
-## 正誤表
 
-本書の正誤情報は以下のページで公開しています。
+## 책의 오류
 
-https://github.com/oreilly-japan/deep-learning-from-scratch-2/wiki/errata
+이 책의 오탈자 등 오류 정보는 아래 페이지에서 확인하실 수 있습니다.
 
-本ページに掲載されていない誤植など間違いを見つけた方は、[japan＠oreilly.co.jp](<mailto:japan＠oreilly.co.jp>)までお知らせください。
+https://docs.google.com/document/d/1pzeh5nrP6y6A5WgT9vvxMpe-ai7ZRhU84BdAhdJzuFk/edit?usp=sharing
+
+
+## 인공지능/딥러닝 관련 도서 로드맵
+
+[개앞맵시] 스카이넷도 딥러닝부터 : https://www.mindmeister.com/812276967/_
+<a href="https://www.mindmeister.com/812276967/_"><img src="https://github.com/WegraLee/deep-learning-from-scratch/blob/master/map.png" width="720"></a>
