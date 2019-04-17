@@ -1,6 +1,10 @@
 『밑바닥부터 시작하는 딥러닝 2』 (원서 : ゼロから作る Deep Learning ❷)
 ==========================
 
+<img src="https://github.com/WegraLee/deep-learning-from-scratch-2/blob/master/cover.png" width="240">
+
+---
+
 이 저장소는 『[밑바닥부터 시작하는 딥러닝 2](http://www.hanbit.co.kr/store/books/look.php?p_code=B8475831198)』(한빛미디어, 2019)의 지원 사이트입니다.
 
 --- 작업 중 ---
