@@ -6,7 +6,7 @@
 
 ---
 
-이 저장소는 『[밑바닥부터 시작하는 딥러닝 ❷](http://www.hanbit.co.kr/store/books/look.php?p_code=B8475831198)』(한빛미디어, 2019)의 지원 사이트입니다. ([『밑바닥부터 시작하는 딥러닝 ❶』의 깃허브 저장소는 이곳](https://github.com/WegraLee/deep-learning-from-scratch)입니다.)
+이 저장소는 『[밑바닥부터 시작하는 딥러닝 ❷](http://www.hanbit.co.kr/store/books/look.php?p_code=B8950212853)』(한빛미디어, 2019)의 지원 사이트입니다. ([『밑바닥부터 시작하는 딥러닝 ❶』의 깃허브 저장소는 이곳](https://github.com/WegraLee/deep-learning-from-scratch)입니다.)
 
 ## 새소식
 
