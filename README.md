@@ -1,13 +1,12 @@
-『밑바닥부터 시작하는 딥러닝 2』 (원서 : ゼロから作る Deep Learning ❷)
+『밑바닥부터 시작하는 딥러닝 ❷』 (원서 : ゼロから作る Deep Learning ❷)
 ==========================
 
-<img src="https://github.com/WegraLee/deep-learning-from-scratch-2/blob/master/cover.png" width="240">
+<img src="https://github.com/WegraLee/deep-learning-from-scratch/blob/master/1_vs_2.png" width="500" align="right">
+<img src="https://github.com/WegraLee/deep-learning-from-scratch-2/blob/master/cover.png" width="320">
 
 ---
 
-이 저장소는 『[밑바닥부터 시작하는 딥러닝 2](http://www.hanbit.co.kr/store/books/look.php?p_code=B8475831198)』(한빛미디어, 2019)의 지원 사이트입니다.
-
---- 작업 중 ---
+이 저장소는 『[밑바닥부터 시작하는 딥러닝 ❷](http://www.hanbit.co.kr/store/books/look.php?p_code=B8475831198)』(한빛미디어, 2019)의 지원 사이트입니다. ([『밑바닥부터 시작하는 딥러닝 ❶』의 깃허브 저장소는 이곳](https://github.com/WegraLee/deep-learning-from-scratch)입니다.)
 
 ## 새소식
 
@@ -69,4 +68,4 @@ https://docs.google.com/document/d/1pzeh5nrP6y6A5WgT9vvxMpe-ai7ZRhU84BdAhdJzuFk/
 ## 인공지능/딥러닝 관련 도서 로드맵
 
 [개앞맵시] 스카이넷도 딥러닝부터 : https://www.mindmeister.com/812276967/_
-<a href="https://www.mindmeister.com/812276967/_"><img src="https://github.com/WegraLee/deep-learning-from-scratch/blob/master/map.png" width="720"></a>
+<a href="https://www.mindmeister.com/812276967/_"><img src="https://scontent.ficn1-1.fna.fbcdn.net/v/t1.0-9/57437528_2669652906441308_5442135107798302720_o.png?_nc_cat=101&_nc_ht=scontent.ficn1-1.fna&oh=9ad0ab89128728a4e810d62f803d8784&oe=5D745923" width="720"></a>
