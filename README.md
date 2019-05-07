@@ -10,6 +10,8 @@
 
 ## 새소식
 
+## 책 미리보기
+[hanbit.co.kr](http://preview2.hanbit.co.kr/books/zcau/)
 
 ## 파일 구성
 
