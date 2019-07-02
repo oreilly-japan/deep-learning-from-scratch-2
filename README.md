@@ -10,6 +10,10 @@
 
 ## 새소식
 
+:white_check_mark: **2019.07.02** - 책 본문의 수식과 그림 파일들을 모아 공유합니다. 스터디 자료 등을 만드실 때 필요하면 활용하세요.
+
+* [equations_and_figures_2.zip](https://github.com/WegraLee/deep-learning-from-scratch-2/blob/master/equations_and_figures_2.zip?raw=true)
+
 ## 책 미리보기
 [hanbit.co.kr](http://preview2.hanbit.co.kr/books/zcau/)
 
