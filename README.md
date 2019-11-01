@@ -3,7 +3,7 @@
 
 [![book](https://raw.githubusercontent.com/oreilly-japan/deep-learning-from-scratch-2/images/deep-learning-from-scratch-2.png)](https://www.oreilly.co.jp/books/9784873118369/)
 
-書籍『[ゼロから作る Deep Learning ❷](https://www.oreilly.co.jp/books/9784873118369/)』(オライリー・ジャパン)のサポートサイトです。本書籍で使用するソースコードがまとめられています。
+書籍『[ゼロから作るDeep Learning ❷ ―自然言語処理編](https://www.oreilly.co.jp/books/9784873118369/)』(オライリー・ジャパン)のサポートサイトです。本書籍で使用するソースコードがまとめられています。
 
 
 
