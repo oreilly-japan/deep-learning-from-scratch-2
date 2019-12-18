@@ -1,12 +1,12 @@
 # coding: utf-8
 import sys
 sys.path.append('..')
-import numpy as np
 from common import config
 # GPUで実行する場合は、下記のコメントアウトを消去（要cupy）
 # ===============================================
 # config.GPU = True
 # ===============================================
+from common.np import *
 import pickle
 from common.trainer import Trainer
 from common.optimizer import Adam
