@@ -498,7 +498,7 @@ class GRU:
 class TimeGRU:
     def __init__(self, Wx, Wh, stateful=False):
         self.Wx, self.Wh = Wx, Wh
-        selfdWx, self.dWh = None, None
+        self.dWx, self.dWh = None, None
         self.layers = None
         self.h, self.dh = None, None
         self.stateful = stateful
