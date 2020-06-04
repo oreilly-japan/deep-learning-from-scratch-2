@@ -430,26 +430,29 @@ class TimeSigmoidWithLoss:
 
 
 class GRU:
-    def __init__(self, Wx, Wh):
+    def __init__(self, Wx, Wh, b):
         '''
 
         Parameters
         ----------
         Wx: 入力`x`用の重みパラーメタ（3つ分の重みをまとめる）
         Wh: 隠れ状態`h`用の重みパラメータ（3つ分の重みをまとめる）
+        b: バイアス（3つ分のバイアスをまとめる）
         '''
-        self.Wx, self.Wh = Wx, Wh
-        self.dWx, self.dWh = None, None
+        self.params = [Wx, Wh, b]
+        self.grads = [np.zeros_like(Wx), np.zeros_like(Wh), np.zeros_like(b)]
         self.cache = None
 
     def forward(self, x, h_prev):
-        H, H3 = self.Wh.shape
-        Wxz, Wxr, Wx = self.Wx[:, :H], self.Wx[:, H:2 * H], self.Wx[:, 2 * H:]
-        Whz, Whr, Wh = self.Wh[:, :H], self.Wh[:, H:2 * H], self.Wh[:, 2 * H:]
+        Wx, Wh, b = self.params
+        H = Wh.shape[0]
+        Wxz, Wxr, Wxh = Wx[:, :H], Wx[:, H:2 * H], Wx[:, 2 * H:]
+        Whz, Whr, Whh = Wh[:, :H], Wh[:, H:2 * H], Wh[:, 2 * H:]
+        bz, br, bh = b[:H], b[H:2 * H], b[2 * H:]
 
-        z = sigmoid(np.dot(x, Wxz) + np.dot(h_prev, Whz))
-        r = sigmoid(np.dot(x, Wxr) + np.dot(h_prev, Whr))
-        h_hat = np.tanh(np.dot(x, Wx) + np.dot(r*h_prev, Wh))
+        z = sigmoid(np.dot(x, Wxz) + np.dot(h_prev, Whz) + bz)
+        r = sigmoid(np.dot(x, Wxr) + np.dot(h_prev, Whr) + br)
+        h_hat = np.tanh(np.dot(x, Wxh) + np.dot(r*h_prev, Whh) + bh)
         h_next = (1-z) * h_prev + z * h_hat
 
         self.cache = (x, h_prev, z, r, h_hat)
@@ -457,9 +460,10 @@ class GRU:
         return h_next
 
     def backward(self, dh_next):
-        H, H3 = self.Wh.shape
-        Wxz, Wxr, Wx = self.Wx[:, :H], self.Wx[:, H:2 * H], self.Wx[:, 2 * H:]
-        Whz, Whr, Wh = self.Wh[:, :H], self.Wh[:, H:2 * H], self.Wh[:, 2 * H:]
+        Wx, Wh, b = self.params
+        H = Wh.shape[0]
+        Wxz, Wxr, Wxh = Wx[:, :H], Wx[:, H:2 * H], Wx[:, 2 * H:]
+        Whz, Whr, Whh = Wh[:, :H], Wh[:, H:2 * H], Wh[:, 2 * H:]
         x, h_prev, z, r, h_hat = self.cache
 
         dh_hat =dh_next * z
@@ -467,15 +471,17 @@ class GRU:
 
         # tanh
         dt = dh_hat * (1 - h_hat ** 2)
-        dWh = np.dot((r * h_prev).T, dt)
-        dhr = np.dot(dt, Wh.T)
-        dWx = np.dot(x.T, dt)
-        dx = np.dot(dt, Wx.T)
+        dbh = np.sum(dt, axis=0)
+        dWhh = np.dot((r * h_prev).T, dt)
+        dhr = np.dot(dt, Whh.T)
+        dWxh = np.dot(x.T, dt)
+        dx = np.dot(dt, Wxh.T)
         dh_prev += r * dhr
 
         # update gate(z)
         dz = dh_next * h_hat - dh_next * h_prev
         dt = dz * z * (1-z)
+        dbz = np.sum(dt, axis=0)
         dWhz = np.dot(h_prev.T, dt)
         dh_prev += np.dot(dt, Whz.T)
         dWxz = np.dot(x.T, dt)
@@ -484,29 +490,35 @@ class GRU:
         # rest gate(r)
         dr = dhr * h_prev
         dt = dr * r * (1-r)
+        dbr = np.sum(dt, axis=0)
         dWhr = np.dot(h_prev.T, dt)
         dh_prev += np.dot(dt, Whr.T)
         dWxr = np.dot(x.T, dt)
         dx += np.dot(dt, Wxr.T)
 
-        self.dWx = np.hstack((dWxz, dWxr, dWx))
-        self.dWh = np.hstack((dWhz, dWhr, dWh))
+        self.dWx = np.hstack((dWxz, dWxr, dWxh))
+        self.dWh = np.hstack((dWhz, dWhr, dWhh))
+        self.db = np.hstack((dbz, dbr, dbh))
+
+        self.grads[0][...] = self.dWx
+        self.grads[1][...] = self.dWh
+        self.grads[2][...] = self.db
 
         return dx, dh_prev
 
 
 class TimeGRU:
-    def __init__(self, Wx, Wh, stateful=False):
-        self.Wx, self.Wh = Wx, Wh
-        self.dWx, self.dWh = None, None
+    def __init__(self, Wx, Wh, b, stateful=False):
+        self.params = [Wx, Wh, b]
+        self.grads = [np.zeros_like(Wx), np.zeros_like(Wh), np.zeros_like(b)]
         self.layers = None
         self.h, self.dh = None, None
         self.stateful = stateful
 
     def forward(self, xs):
+        Wx, Wh, b = self.params
         N, T, D = xs.shape
-        H, H3 = self.Wh.shape
-
+        H = Wh.shape[0]
         self.layers = []
         hs = np.empty((N, T, H), dtype='f')
 
@@ -514,28 +526,31 @@ class TimeGRU:
             self.h = np.zeros((N, H), dtype='f')
 
         for t in range(T):
-            layer = GRU(self.Wx, self.Wh)
+            layer = GRU(*self.params)
             self.h = layer.forward(xs[:, t, :], self.h)
             hs[:, t, :] = self.h
             self.layers.append(layer)
-
         return hs
 
     def backward(self, dhs):
+        Wx, Wh, b = self.params
         N, T, H = dhs.shape
-        D = self.Wx.shape[0]
+        D = Wx.shape[0]
 
         dxs = np.empty((N, T, D), dtype='f')
-        self.dWx, self.dWh = 0, 0
 
         dh = 0
+        grads = [0, 0, 0]
         for t in reversed(range(T)):
             layer = self.layers[t]
             dx, dh = layer.backward(dhs[:, t, :] + dh)
-
             dxs[:, t, :] = dx
-            self.dWx += layer.dWx
-            self.dWh += layer.dWh
+
+            for i, grad in enumerate(layer.grads):
+                grads[i] += grad
+
+        for i, grad in enumerate(grads):
+            self.grads[i][...] = grad
 
         self.dh = dh
         return dxs
