@@ -1,12 +1,16 @@
-『밑바닥부터 시작하는 딥러닝 ❷』 (원서 : ゼロから作る Deep Learning ❷)
-==========================
+# 『밑바닥부터 시작하는 딥러닝 ❷』
 
-<img src="https://github.com/WegraLee/deep-learning-from-scratch/blob/master/1_vs_2.png" width="500" align="right">
 <img src="https://github.com/WegraLee/deep-learning-from-scratch-2/blob/master/cover.png" width="320">
 
 ---
 
-이 저장소는 『[밑바닥부터 시작하는 딥러닝 ❷](http://www.hanbit.co.kr/store/books/look.php?p_code=B8950212853)』(한빛미디어, 2019)의 지원 사이트입니다. ([『밑바닥부터 시작하는 딥러닝 ❶』의 깃허브 저장소는 이곳](https://github.com/WegraLee/deep-learning-from-scratch)입니다.)
+## 시리즈 소개 ([PDF 다운로드](https://github.com/WegraLee/deep-learning-from-scratch-3/blob/master/%EB%B0%91%EB%B0%94%EB%8B%A5123.pdf))
+
+<img src="https://github.com/WegraLee/deep-learning-from-scratch-3/blob/master/%EB%B0%91%EB%B0%94%EB%8B%A5123.png" width=1000>
+
+* [『밑바닥부터 시작하는 딥러닝』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch)
+* [『밑바닥부터 시작하는 딥러닝 ❸』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-3)
+
 
 ## 새소식
 
