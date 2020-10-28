@@ -10,9 +10,9 @@
 
 ---
 
-## 시리즈 소개 ([PDF 다운로드](https://github.com/WegraLee/deep-learning-from-scratch-3/blob/master/%EB%B0%91%EB%B0%94%EB%8B%A5123.pdf))
+## 시리즈 소개
 
-<img src="https://github.com/WegraLee/deep-learning-from-scratch-3/blob/master/%EB%B0%91%EB%B0%94%EB%8B%A5123.png" width=1000>
+<a href="https://github.com/WegraLee/deep-learning-from-scratch-3/blob/master/%EB%B0%91%EB%B0%94%EB%8B%A5123.pdf"><img src="https://github.com/WegraLee/deep-learning-from-scratch-3/blob/master/%EB%B0%91%EB%B0%94%EB%8B%A5123.png" width=1000></a>
 
 * [『밑바닥부터 시작하는 딥러닝』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch)
 * [『밑바닥부터 시작하는 딥러닝 ❸』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-3)
