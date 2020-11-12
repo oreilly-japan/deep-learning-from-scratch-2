@@ -1,6 +1,6 @@
 # 『밑바닥부터 시작하는 딥러닝 ❷』
 
-<img src="https://github.com/WegraLee/deep-learning-from-scratch-2/blob/master/cover.png" width="200" align=right>
+<a href="http://www.yes24.com/Product/Goods/72173703"><img src="https://github.com/WegraLee/deep-learning-from-scratch-2/blob/master/cover.png" width="200" align=right></a>
 
 ## 새소식
 
