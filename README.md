@@ -59,4 +59,4 @@ $ python train_custom_loop.py
 
 https://github.com/oreilly-japan/deep-learning-from-scratch-2/wiki/errata
 
-本ページに掲載されていない誤植など間違いを見つけた方は、[japan＠oreilly.co.jp](<mailto:japan＠oreilly.co.jp>)までお知らせください。
+本ページに掲載されていない誤植など間違いを見つけた方は、[japan@oreilly.co.jp](<mailto:japan@oreilly.co.jp>)までお知らせください。
