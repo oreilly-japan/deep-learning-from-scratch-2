@@ -143,7 +143,7 @@ def ppmi(C, verbose=False, eps = 1e-8):
 
             if verbose:
                 cnt += 1
-                if cnt % (total//100) == 0:
+                if cnt % (total//100 + 1) == 0:
                     print('%.1f%% 완료' % (100*cnt/total))
     return M
 
