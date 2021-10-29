@@ -225,7 +225,7 @@ def eval_perplexity(model, corpus, batch_size=10, time_size=35):
 
 
 def eval_seq2seq(model, question, correct, id_to_char,
-                 verbos=False, is_reverse=False):
+                 verbose=False, is_reverse=False):
     correct = correct.flatten()
     # 頭の区切り文字
     start_id = correct[0]
@@ -237,7 +237,7 @@ def eval_seq2seq(model, question, correct, id_to_char,
     correct = ''.join([id_to_char[int(c)] for c in correct])
     guess = ''.join([id_to_char[int(c)] for c in guess])
 
-    if verbos:
+    if verbose:
         if is_reverse:
             question = question[::-1]
 
