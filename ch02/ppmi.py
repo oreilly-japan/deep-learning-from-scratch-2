@@ -12,7 +12,7 @@ C = create_co_matrix(corpus, vocab_size)
 W = ppmi(C)
 
 np.set_printoptions(precision=3)  # 有効桁３桁で表示
-print('covariance matrix')
+print('co-occurrence matrix')
 print(C)
 print('-'*50)
 print('PPMI')
