@@ -1,9 +1,8 @@
 # 『밑바닥부터 시작하는 딥러닝 ❷』
 
-<a href="http://www.yes24.com/Product/Goods/72173703"><img src="https://github.com/WegraLee/deep-learning-from-scratch-2/blob/master/cover.png" width="200" align=right></a>
+<a href="http://www.yes24.com/Product/Goods/72173703"><img src="https://github.com/WegraLee/deep-learning-from-scratch-2/blob/master/cover.png" width="150" align=right></a>
 
 ## 새소식
-
 :white_check_mark: **2019.07.02** - 책 본문의 수식과 그림 파일들을 모아 공유합니다. 스터디 자료 등을 만드실 때 필요하면 활용하세요.
 
 * [equations_and_figures_2.zip](https://github.com/WegraLee/deep-learning-from-scratch-2/blob/master/equations_and_figures_2.zip?raw=true)
@@ -16,6 +15,14 @@
 
 * [『밑바닥부터 시작하는 딥러닝』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch)
 * [『밑바닥부터 시작하는 딥러닝 ❸』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-3)
+* [『밑바닥부터 시작하는 딥러닝 ❹』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-4)
+
+『밑바닥부터 시작하는 딥러닝』 시리즈는 현재 4편까지 출간되었고, 2024년 중으로 5편도 출간될 예정입니다. 5편까지의 핵심 내용과 관계는 대략 다음 그림처럼 정리할 수 있습니다.
+
+<img src="https://github.com/WegraLee/deep-learning-from-scratch-4/blob/master/series overview.png" width="600">
+
+4편에서는 강화 학습에 딥러닝을 결합한 심층 강화 학습을 설명하며, 당연하게도 3편에서 제작한 프레임워크를 활용합니다.
+5편에서는 요즘 가장 핫한 생성 모델을 다룰 계획입니다.
 
 ## 선수지식
 
@@ -74,12 +81,4 @@ $ python train_custom_loop.py
 
 ## 책의 오류
 
-이 책의 오탈자 등 오류 정보는 아래 페이지에서 확인하실 수 있습니다.
-
-https://docs.google.com/document/d/1pzeh5nrP6y6A5WgT9vvxMpe-ai7ZRhU84BdAhdJzuFk/edit?usp=sharing
-
-
-## 인공지능/딥러닝 관련 도서 로드맵
-
-[개앞맵시] 스카이넷도 딥러닝부터 : https://www.mindmeister.com/812276967/_
-<a href="https://www.mindmeister.com/812276967/_"><img src="https://scontent.ficn1-1.fna.fbcdn.net/v/t1.0-9/57437528_2669652906441308_5442135107798302720_o.png?_nc_cat=101&_nc_ht=scontent.ficn1-1.fna&oh=9ad0ab89128728a4e810d62f803d8784&oe=5D745923" width="720"></a>
+이 책의 오탈자 등 오류 정보는 [정오표](https://docs.google.com/document/d/1pzeh5nrP6y6A5WgT9vvxMpe-ai7ZRhU84BdAhdJzuFk/edit?usp=sharing)에서 확인하실 수 있습니다.
