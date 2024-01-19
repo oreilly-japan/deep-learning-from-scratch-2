@@ -13,16 +13,16 @@
 
 <a href="https://github.com/WegraLee/deep-learning-from-scratch-3/blob/master/%EB%B0%91%EB%B0%94%EB%8B%A5%20%EC%8B%9C%EB%A6%AC%EC%A6%88%20%EC%86%8C%EA%B0%9C.pdf"><img src="https://github.com/WegraLee/deep-learning-from-scratch-3/blob/master/%EB%B0%91%EB%B0%94%EB%8B%A5%20%EC%8B%9C%EB%A6%AC%EC%A6%88%20%EC%86%8C%EA%B0%9C.png" width=1000></a>
 
-* [『밑바닥부터 시작하는 딥러닝』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch)
-* [『밑바닥부터 시작하는 딥러닝 ❸』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-3)
-* [『밑바닥부터 시작하는 딥러닝 ❹』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-4)
-
 『밑바닥부터 시작하는 딥러닝』 시리즈는 현재 4편까지 출간되었고, 2024년 중으로 5편도 출간될 예정입니다. 5편까지의 핵심 내용과 관계는 대략 다음 그림처럼 정리할 수 있습니다.
 
 <img src="https://github.com/WegraLee/deep-learning-from-scratch-4/blob/master/series overview.png" width="600">
 
 4편에서는 강화 학습에 딥러닝을 결합한 심층 강화 학습을 설명하며, 당연하게도 3편에서 제작한 프레임워크를 활용합니다.
 5편에서는 요즘 가장 핫한 생성 모델을 다룰 계획입니다.
+
+* [❶편의 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch)
+* [❸편의 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-3)
+* [❹편의 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-4)
 
 ## 선수지식
 
