@@ -69,29 +69,23 @@ def most_similar(query, word_to_id, id_to_word, word_matrix, top=5):
         if count >= top:
             return
 
-
+    
 def convert_one_hot(corpus, vocab_size):
     '''one-hot表現への変換
-
-    :param corpus: 単語IDのリスト（1次元もしくは2次元のNumPy配列）
+    :param corpus: 単語IDのリスト（任意次元のNumPy配列）
     :param vocab_size: 語彙数
-    :return: one-hot表現（2次元もしくは3次元のNumPy配列）
+    :return: one-hot表現（+1次元されたNumPy配列）
     '''
-    N = corpus.shape[0]
-
+    result = []
     if corpus.ndim == 1:
-        one_hot = np.zeros((N, vocab_size), dtype=np.int32)
-        for idx, word_id in enumerate(corpus):
-            one_hot[idx, word_id] = 1
-
-    elif corpus.ndim == 2:
-        C = corpus.shape[1]
-        one_hot = np.zeros((N, C, vocab_size), dtype=np.int32)
-        for idx_0, word_ids in enumerate(corpus):
-            for idx_1, word_id in enumerate(word_ids):
-                one_hot[idx_0, idx_1, word_id] = 1
-
-    return one_hot
+        for elem in corpus:
+            one_hot = [0]*vocab_size # [0,0,...,0]
+            one_hot[elem] = 1
+            result.append(one_hot)
+    else:
+        for vector in corpus:
+            result.append(convert_one_hot(vector, vocab_size))
+    return np.array(result, dtype=np.int32)
 
 
 def create_co_matrix(corpus, vocab_size, window_size=1):
